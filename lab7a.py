@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-# Student ID: [seneca_id]
+# Student ID: hmohammad7
+
 class Time:
     """Simple object type for time of the day.
     data attributes: hour, minute, second
     """
     def __init__(self,hour=12,minute=0,second=0):
-        """constructor for time object""" 
+        """constructor for time object"""
         self.hour = hour
         self.minute = minute
         self.second = second
@@ -20,7 +21,18 @@ def sum_times(t1, t2):
     sum.hour = t1.hour + t2.hour
     sum.minute = t1.minute + t2.minute
     sum.second = t1.second + t2.second
+
+    if sum.second >= 60:
+        sum.minute += sum.second // 60
+        sum.second = sum.second % 60
+
+    # Carry over for minutes
+    if sum.minute >= 60:
+        sum.hour += sum.minute // 60
+        sum.minute = sum.minute % 60
+
     return sum
+
 
 def valid_time(t):
     """check for the validity of the time object attributes:
